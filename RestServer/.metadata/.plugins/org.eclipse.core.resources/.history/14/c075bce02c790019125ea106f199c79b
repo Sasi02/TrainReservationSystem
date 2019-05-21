@@ -1,0 +1,33 @@
+package com.ds.trainproject.models;
+
+import org.springframework.data.annotation.Id;
+
+public class Reservation {
+	@Id
+	private long id;
+	private long userId;
+	private long trainId;
+	private double price;
+	private int noOfTickets;
+	
+	public Reservation() {}
+	
+	public Reservation(long userId, long trainId, double price, int noOfTickets) {
+		super();
+		this.userId = userId;
+		this.trainId = trainId;
+		this.price = price;
+		this.noOfTickets = noOfTickets;
+	}
+	
+	public Reservation(long id, long userId, long trainId, double price, int noOfTickets) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.trainId = trainId;
+		this.price = price;
+		this.noOfTickets = noOfTickets;
+	}
+	
+	
+}

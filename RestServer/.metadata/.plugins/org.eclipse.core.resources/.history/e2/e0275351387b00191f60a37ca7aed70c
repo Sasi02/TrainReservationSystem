@@ -1,0 +1,110 @@
+package com.ds.trainproject.models;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;;
+
+@Document(collection = "users")
+public class User {
+	@Id
+	private String id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String telephoneNo;
+	private String password;
+	private boolean isGovernment;
+	private String department;
+	private String nic;
+	
+	public User() {}
+	
+	public User(String firstName, String lastName, String email, String telephoneNo, boolean isGovernment, String department, 
+			String nic) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.telephoneNo = telephoneNo;
+		this.isGovernment = isGovernment;
+		this.department = department;
+		this.nic = nic;
+	}
+	
+	public User(String id, String firstName, String lastName, String email, String telephoneNo, boolean isGovernment, String department, 
+			String nic) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.telephoneNo = telephoneNo;
+		this.isGovernment = isGovernment;
+		this.department = department;
+		this.nic = nic;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelephoneNo() {
+		return telephoneNo;
+	}
+
+	public void setTelephoneNo(String telephoneNo) {
+		this.telephoneNo = telephoneNo;
+	}
+
+	public boolean isGovernment() {
+		return isGovernment;
+	}
+
+	public void setGovernment(boolean isGovernment) {
+		this.isGovernment = isGovernment;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public String getNic() {
+		return nic;
+	}
+
+	public void setNic(String nic) {
+		this.nic = nic;
+	}
+	
+}

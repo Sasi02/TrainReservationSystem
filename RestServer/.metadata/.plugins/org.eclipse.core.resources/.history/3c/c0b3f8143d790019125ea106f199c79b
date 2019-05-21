@@ -1,0 +1,5 @@
+package com.ds.trainproject.repos;
+
+public interface ReservationRepository {
+
+}

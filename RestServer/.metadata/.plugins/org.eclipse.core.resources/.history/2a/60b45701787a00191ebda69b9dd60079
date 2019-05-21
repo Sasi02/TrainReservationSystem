@@ -1,0 +1,70 @@
+package com.ds.trainproject.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ds.trainproject.models.Train;
+import com.ds.trainproject.models.User;
+import com.ds.trainproject.repos.UserRepository;
+
+@RestController
+public class UserController {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@RequestMapping(method = RequestMethod.GET, value="/users")
+	public List<User> getAll() {
+		return userRepository.findAll();
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/users")
+	public User save(@RequestBody User user) {
+		userRepository.save(user);
+		
+		return user;
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value="/users/{id}")
+	public User update(@PathVariable String id, @RequestBody User user) {
+		Optional<User> optUser = userRepository.findById(id);
+		User getUser = optUser.get();
+		
+		if(user.getFirstName() != null)
+			getUser.setFirstName(user.getFirstName());
+		if(user.getLastName() != null)
+			getUser.setLastName(user.getLastName());
+		if(user.getEmail() != null)
+			getUser.setEmail(user.getEmail());
+		if(user.getEmail() != null)
+			getUser.setEmail(user.getEmail());
+		if(user.getTelephoneNo() != null)
+			getUser.setTelephoneNo(user.getTelephoneNo());
+		if(user.getDepartment() != null)
+			getUser.setDepartment(user.getDepartment());
+		if(user.getNic() != null)
+			getUser.setNic(user.getNic());
+		if(user.getOffer() != 0.0)
+			getUser.setOffer(user.getOffer());
+		
+		userRepository.save(getUser);
+		return getUser;
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value="/trains/{id}")
+	public Train delete(@PathVariable String id) {
+		Optional<Train> optTrain = trainRepository.findById(id);
+		Train train = optTrain.get();
+		
+		trainRepository.delete(train);
+		
+		return train;
+	}
+}

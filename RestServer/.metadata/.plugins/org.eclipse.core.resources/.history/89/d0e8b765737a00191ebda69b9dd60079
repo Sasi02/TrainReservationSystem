@@ -1,0 +1,54 @@
+package com.ds.trainproject.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ds.trainproject.models.Train;
+import com.ds.trainproject.repos.TrainRepository;
+
+@RestController
+public class TrainController {
+
+	@Autowired
+	private TrainRepository trainRepository;
+	
+	@RequestMapping(method = RequestMethod.GET, value="/trains")
+	public List<Train> getAll() {
+		return trainRepository.findAll();
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/trains")
+	public Train save(@RequestBody Train train) {
+		trainRepository.save(train);
+		
+		return train;
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value="/trains/{id}")
+	public Train update(@PathVariable String id, @RequestBody Train train) {
+		Optional<Train> optTrain = trainRepository.findById(id);
+		Train getTrain = optTrain.get();
+		
+		if(train.getTrainName() != null)
+			getTrain.setTrainName(train.getTrainName());
+		if(train.getStartDestination() != null)
+			getTrain.setStartDestination(train.getStartDestination());
+		if(train.getEndDestination() != null)
+			getTrain.setEndDestination(train.getEndDestination());
+		if(train.getStartTime() != null)
+			getTrain.setStartTime(train.getStartTime());
+		if(train.getEndTime() != null)
+			getTrain.setEndTime(train.getEndTime());
+		if(train.getAvailableDays() != null)
+			getTrain.setAvailableDays(train.getAvailableDays());
+		if(train.getTripPrice() != 0)
+			getTrain.setTripPrice(train.getTripPrice());
+	}
+}

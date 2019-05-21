@@ -1,0 +1,26 @@
+package com.ds.trainproject.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ds.trainproject.models.Reservation;
+import com.ds.trainproject.models.Train;
+import com.ds.trainproject.repos.ReservationRepository;
+
+@RestController
+public class ReservationController {
+	
+	@Autowired
+	private ReservationRepository reservationRepository;
+	
+	@RequestMapping(method = RequestMethod.GET, value="/trains")
+	public List<Reservation> getAll() {
+		return reservationRepository.findAll();
+	}
+	
+	
+}

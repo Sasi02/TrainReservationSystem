@@ -1,0 +1,43 @@
+package com.ds.trainproject.models;
+
+public class GovernmentUser extends User {
+	private String nicNo;
+	private String govDepartment;
+	private double offer;
+	
+	public GovernmentUser() {
+		super();
+	}
+	
+	public GovernmentUser(String nicNo, String govDepartment, double offer) {
+		super();
+		this.nicNo = nicNo;
+		this.govDepartment = govDepartment;
+		this.offer = offer;
+	}
+
+	public String getNicNo() {
+		return nicNo;
+	}
+
+	public void setNicNo(String nicNo) {
+		this.nicNo = nicNo;
+	}
+
+	public String getGovDepartment() {
+		return govDepartment;
+	}
+
+	public void setGovDepartment(String govDepartment) {
+		this.govDepartment = govDepartment;
+	}
+
+	public double getOffer() {
+		return offer;
+	}
+
+	public void setOffer(double offer) {
+		this.offer = offer;
+	}
+		
+}

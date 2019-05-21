@@ -1,0 +1,11 @@
+package com.ds.trainproject.models;
+
+import org.springframework.data.annotation.Id;
+
+public class Reservation {
+	@Id
+	private long id;
+	private long userId;
+	private long trainId;
+	private double price;
+}

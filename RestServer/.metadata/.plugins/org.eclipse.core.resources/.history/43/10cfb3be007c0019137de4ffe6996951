@@ -1,0 +1,30 @@
+package com.ds.trainproject.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class PaymentController {
+
+	public void checkCard(@RequestParam String No,
+			@RequestParam String cvc,
+			@RequestParam String expiredDate,
+			@RequestParam String holderName) {
+		List<String> CCs = Arrays.asList(new String[] {
+				"Sachith Rukshan,1234 5678 9012 3456,354,12/05",
+				"Sasindu Lakshitha,1934 5578 9212 3456,384,02/05",
+				"Dinali Sewwandi,1234 5678 9012 3456,354,11/05",
+				"Gnana Paala,1234 5678 9012 3456,354,12/10"
+		});
+		Person person = personRepository.findById(id).orElseThrow();
+		Booking booking = repository.findById(bid).orElseThrow();
+		
+		if(CCs.contains(String.join(",",cName, cardNo,Short.toString(cvc),exp))) {
+			booking.setPaid(true);
+			//emailService.sendMail(person.getEmail(), "Successfully Confirmed Your Payment", "Please be informed that your payment is successfully confirmed and you will recieve your ticket as promised.");
+		}
+		repository.save(booking);
+	}
+	
+	
+}

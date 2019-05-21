@@ -1,0 +1,38 @@
+package com.ds.trainproject.models;
+
+import org.springframework.data.annotation.Id;
+
+public class Train {
+	
+	@Id
+    private long id;
+	private String trainNumber;
+	
+	public Train() {}
+	
+	public Train(long id, String trainNumber) {
+		super();
+		this.id = id;
+		this.trainNumber = trainNumber;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTrainNumber() {
+		return trainNumber;
+	}
+
+	public void setTrainNumber(String trainNumber) {
+		this.trainNumber = trainNumber;
+	}
+	
+	
+	
+	
+}

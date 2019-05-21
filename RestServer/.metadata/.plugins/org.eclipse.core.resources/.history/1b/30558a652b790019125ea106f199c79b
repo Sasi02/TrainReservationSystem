@@ -1,0 +1,5 @@
+package com.ds.trainproject.models;
+
+public class Reservation {
+
+}
